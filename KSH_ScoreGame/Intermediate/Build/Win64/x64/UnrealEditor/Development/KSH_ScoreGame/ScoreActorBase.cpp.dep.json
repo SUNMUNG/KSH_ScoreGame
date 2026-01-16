@@ -7,7 +7,26 @@
         "Includes": [
             "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\ksh_scoregame\\definitions.ksh_scoregame.h",
             "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\source\\ksh_scoregame\\public\\scoreactor\\scoreactorbase.h",
-            "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\intermediate\\build\\win64\\unrealeditor\\inc\\ksh_scoregame\\uht\\scoreactorbase.generated.h"
+            "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\intermediate\\build\\win64\\unrealeditor\\inc\\ksh_scoregame\\uht\\scoreactorbase.generated.h",
+            "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\source\\ksh_scoregame\\public\\character\\scorecharacter.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\gameframework\\character.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\gameframework\\charactermovementreplication.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\net\\core\\public\\net\\core\\nettoken\\nettokenexportcontext.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\experimental\\iris\\core\\public\\iris\\serialization\\irisobjectreferencepackagemap.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\iriscore\\uht\\irisobjectreferencepackagemap.generated.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\charactermovementreplication.generated.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\rootmotionsource.generated.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\character.generated.h",
+            "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\intermediate\\build\\win64\\unrealeditor\\inc\\ksh_scoregame\\uht\\scorecharacter.generated.h",
+            "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\source\\ksh_scoregame\\public\\framework\\scoreplayerstate.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\gameframework\\playerstate.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\playerstate.generated.h",
+            "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\intermediate\\build\\win64\\unrealeditor\\inc\\ksh_scoregame\\uht\\scoreplayerstate.generated.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\components\\spherecomponent.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\components\\shapecomponent.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\shapecomponent.generated.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\spherecomponent.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

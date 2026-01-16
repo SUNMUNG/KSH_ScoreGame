@@ -8,7 +8,7 @@ public class KSH_ScoreGame : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore","UMG", "NavigationSystem", "EnhancedInput", "Niagara", "NetCore" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 

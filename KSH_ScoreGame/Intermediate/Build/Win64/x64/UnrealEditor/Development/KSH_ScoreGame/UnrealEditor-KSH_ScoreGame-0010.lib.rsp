@@ -1,0 +1,26 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-KSH_ScoreGame-0010.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\KSH_ScoreGameEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.InclOrderUnreal5_3.h.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\KSH_ScoreGame.init.gen.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\ScoreActorBase.gen.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\ScoreCharacter.gen.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\ScoreGameInstance.gen.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\ScoreGameState.gen.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\ScorePlayerState.gen.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\TestActor.gen.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\KSH_ScoreGame.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\TestActor.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\ScoreGameInstance.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\ScoreActorBase.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\PerModuleInline.gen.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\ScoreCharacter.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\ScoreGameState.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\ScorePlayerState.cpp.obj"
+"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\Default.rc2.res"
+/OUT:"C:\Users\KGA\Documents\Unreal Projects\KSH_ScoreGame\KSH_ScoreGame\Intermediate\Build\Win64\x64\UnrealEditor\Development\KSH_ScoreGame\UnrealEditor-KSH_ScoreGame-0010.lib"
