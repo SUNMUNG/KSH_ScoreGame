@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "KSH_ScoreGame",
+			"Path": "..\\Source\\KSH_ScoreGame.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "KSH_ScoreGameEditor",
+			"Path": "..\\Source\\KSH_ScoreGameEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

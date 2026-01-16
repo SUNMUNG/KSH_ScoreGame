@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\Users\\KGA\\Documents\\Unreal Projects\\KSH_ScoreGame\\KSH_ScoreGame\\Source\\KSH_ScoreGame\\KSH_ScoreGame.Build.cs",
+		"C:\\Users\\KGA\\Documents\\Unreal Projects\\KSH_ScoreGame\\KSH_ScoreGame\\Source\\KSH_ScoreGame.Target.cs",
+		"C:\\Users\\KGA\\Documents\\Unreal Projects\\KSH_ScoreGame\\KSH_ScoreGame\\Source\\KSH_ScoreGameEditor.Target.cs"
+	],
+	"EngineVersion": "5.5.4"
+}

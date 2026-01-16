@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\source\\ksh_scoregame\\private\\scoreactor\\scoreactorbase.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\intermediate\\build\\win64\\x64\\ksh_scoregameeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.inclorderunreal5_3.h.pch",
+        "Includes": [
+            "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\ksh_scoregame\\definitions.ksh_scoregame.h",
+            "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\source\\ksh_scoregame\\public\\scoreactor\\scoreactorbase.h",
+            "c:\\users\\kga\\documents\\unreal projects\\ksh_scoregame\\ksh_scoregame\\intermediate\\build\\win64\\unrealeditor\\inc\\ksh_scoregame\\uht\\scoreactorbase.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

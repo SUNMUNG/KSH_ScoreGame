@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\KSH_ScoreGame.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\KSH_ScoreGame.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\KSH_ScoreGameEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\KSH_ScoreGame">
+      <UniqueIdentifier>{C4FE218B-DE58-33CA-A314-CF9ADA232314}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\KSH_ScoreGame\KSH_ScoreGame.Build.cs">
+      <Filter>Source\KSH_ScoreGame</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\KSH_ScoreGame.cpp">
+      <Filter>Source\KSH_ScoreGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\KSH_ScoreGame.h">
+      <Filter>Source\KSH_ScoreGame</Filter>
+    </ClCompile>
+    <Filter Include="Source\KSH_ScoreGame\Private">
+      <UniqueIdentifier>{99279101-4D9D-3074-937C-9EA4A9CC0214}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\TestActor.cpp">
+      <Filter>Source\KSH_ScoreGame\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\KSH_ScoreGame\Private\Character">
+      <UniqueIdentifier>{E8BF4C8E-0080-3502-9BEC-26E0494D3D48}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\Character\ScoreCharacter.cpp">
+      <Filter>Source\KSH_ScoreGame\Private\Character</Filter>
+    </ClCompile>
+    <Filter Include="Source\KSH_ScoreGame\Private\Framework">
+      <UniqueIdentifier>{1E3B099F-93CD-308C-9B3C-E175DA66ECF3}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\Framework\ScoreGameInstance.cpp">
+      <Filter>Source\KSH_ScoreGame\Private\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\Framework\ScoreGameState.cpp">
+      <Filter>Source\KSH_ScoreGame\Private\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\Framework\ScorePlayerState.cpp">
+      <Filter>Source\KSH_ScoreGame\Private\Framework</Filter>
+    </ClCompile>
+    <Filter Include="Source\KSH_ScoreGame\Private\ScoreActor">
+      <UniqueIdentifier>{0E5180FE-DE9B-39E6-B439-141A234892F9}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\ScoreActor\ScoreActorBase.cpp">
+      <Filter>Source\KSH_ScoreGame\Private\ScoreActor</Filter>
+    </ClCompile>
+    <Filter Include="Source\KSH_ScoreGame\Public">
+      <UniqueIdentifier>{369D6E5E-59B7-325D-B4F2-A84A02BDB51E}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\TestActor.h">
+      <Filter>Source\KSH_ScoreGame\Public</Filter>
+    </ClCompile>
+    <Filter Include="Source\KSH_ScoreGame\Public\Character">
+      <UniqueIdentifier>{07067F5C-F761-3EA0-BDD6-77CFEE05DB6F}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\Character\ScoreCharacter.h">
+      <Filter>Source\KSH_ScoreGame\Public\Character</Filter>
+    </ClCompile>
+    <Filter Include="Source\KSH_ScoreGame\Public\Framework">
+      <UniqueIdentifier>{821C7B7A-9F1C-3E90-8642-ED577FF04736}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\Framework\ScoreGameInstance.h">
+      <Filter>Source\KSH_ScoreGame\Public\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\Framework\ScoreGameState.h">
+      <Filter>Source\KSH_ScoreGame\Public\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\Framework\ScorePlayerState.h">
+      <Filter>Source\KSH_ScoreGame\Public\Framework</Filter>
+    </ClCompile>
+    <Filter Include="Source\KSH_ScoreGame\Public\ScoreActor">
+      <UniqueIdentifier>{BB5D6EA1-6C51-3D96-AC02-49EE5E822B12}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\ScoreActor\ScoreActorBase.h">
+      <Filter>Source\KSH_ScoreGame\Public\ScoreActor</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
