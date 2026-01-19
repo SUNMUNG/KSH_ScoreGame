@@ -21,7 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeKSH_ScoreGame_init() {}
 				SingletonFuncArray,
 				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0x6E9A5C9F,
+				0x99DBACB8,
 				0xF00D2F10,
 				METADATA_PARAMS(0, nullptr)
 			};
@@ -29,5 +29,5 @@ void EmptyLinkFunctionForGeneratedCodeKSH_ScoreGame_init() {}
 		}
 		return Z_Registration_Info_UPackage__Script_KSH_ScoreGame.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_KSH_ScoreGame(Z_Construct_UPackage__Script_KSH_ScoreGame, TEXT("/Script/KSH_ScoreGame"), Z_Registration_Info_UPackage__Script_KSH_ScoreGame, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x6E9A5C9F, 0xF00D2F10));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_KSH_ScoreGame(Z_Construct_UPackage__Script_KSH_ScoreGame, TEXT("/Script/KSH_ScoreGame"), Z_Registration_Info_UPackage__Script_KSH_ScoreGame, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x99DBACB8, 0xF00D2F10));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

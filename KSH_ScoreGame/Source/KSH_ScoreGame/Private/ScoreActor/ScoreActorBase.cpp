@@ -15,6 +15,7 @@ AScoreActorBase::AScoreActorBase()
 	PrimaryActorTick.bCanEverTick = false;
 	Collision = CreateDefaultSubobject<USphereComponent>(TEXT("Collision"));
 	SetRootComponent(Collision);
+	bReplicates = true;
 
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	Mesh->SetupAttachment(Collision);
@@ -39,7 +40,12 @@ void AScoreActorBase::OnActorOverlap(AActor* OverlappedActor, AActor* OtherActor
 		if (AScorePlayerState* state = Cast<AScorePlayerState>(character->GetPlayerState()))
 		{
 			//UE_LOG(LogTemp, Warning, TEXT("state있음"));
-			state->AddMyScore(ActorScore);
+			if (HasAuthority())
+			{
+				state->AddMyScore(ActorScore);
+				UE_LOG(LogTemp, Warning, TEXT("%s의 점수 %d추가"), *character->GetName(), ActorScore);
+			}
+			
 
 			Destroy();
 		}

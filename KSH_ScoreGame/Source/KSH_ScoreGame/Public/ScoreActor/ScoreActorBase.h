@@ -33,7 +33,7 @@ protected:
 	TObjectPtr<UStaticMeshComponent> Mesh = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
-	int32 ActorScore = 1.0f;
+	int32 ActorScore = 1;
 
 
 };

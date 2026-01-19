@@ -14,7 +14,10 @@ void AScoreGameState::BeginPlay()
 	GameElapsedTime = 0.0f;
 	isGameEnd = false;
 	
-	ScoreGameStart();
+	if (HasAuthority())
+	{
+		ScoreGameStart();
+	}
 	//isGameStart = false;
 }
 
@@ -113,7 +116,7 @@ FVector AScoreGameState::FindRandomLocation()
 			// 찾은 좌표: RandomLocation.Location
 			UE_LOG(LogTemp, Log, TEXT("Found Location: %s"), *RandomLocation.Location.ToString());
 
-			return RandomLocation.Location;
+			return RandomLocation.Location+FVector::UpVector*100.0f;
 		}
 	}
 	return FVector::ZeroVector;

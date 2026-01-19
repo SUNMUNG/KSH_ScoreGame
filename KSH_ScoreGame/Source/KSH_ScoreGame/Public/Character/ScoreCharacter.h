@@ -19,12 +19,15 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+
+	virtual void OnRep_PlayerState() override;
 public:	
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-
+	UFUNCTION(BlueprintImplementableEvent, Category = "Score")
+	void OnPlayerStateReady(class AScorePlayerState* NewState);
 public:
 
 protected:

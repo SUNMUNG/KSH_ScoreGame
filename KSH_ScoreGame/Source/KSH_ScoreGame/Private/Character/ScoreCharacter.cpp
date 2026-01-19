@@ -22,10 +22,17 @@ void AScoreCharacter::BeginPlay()
 	
 }
 
+void AScoreCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+}
+
 // Called to bind functionality to input
 void AScoreCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
+
+
 

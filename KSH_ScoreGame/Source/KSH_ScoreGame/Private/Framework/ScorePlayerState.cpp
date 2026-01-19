@@ -23,6 +23,11 @@ void AScorePlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 void AScorePlayerState::AddMyScore(int32 ScoreAmount)
 {
 	MyScore += ScoreAmount;
+
+	if (HasAuthority())
+	{
+		OnRepNotify_MyScore();
+	}
 }
 
 void AScorePlayerState::OnRepNotify_MyScore()
