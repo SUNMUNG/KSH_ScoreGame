@@ -11,7 +11,7 @@ AScoreGameState::AScoreGameState()
 }
 void AScoreGameState::BeginPlay()
 {
-	GameElapsedTime = 0.0f;
+	GameRemainingTime = PlayGameTime;
 	isGameEnd = false;
 	
 	if (HasAuthority())
@@ -29,7 +29,7 @@ void AScoreGameState::Tick(float DeltaTime)
 	if (HasAuthority())
 	{
 		if (!isGameEnd) {
-			GameElapsedTime += DeltaTime;
+			GameRemainingTime -= DeltaTime;
 		}
 	}
 	
@@ -39,7 +39,7 @@ void AScoreGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(AScoreGameState, GameElapsedTime);
+	DOREPLIFETIME(AScoreGameState, GameRemainingTime);
 }
 
 void AScoreGameState::ScoreGameStart()
@@ -60,7 +60,7 @@ void AScoreGameState::ScoreGameEnd()
 
 void AScoreGameState::SpawnProps()
 {
-	UE_LOG(LogTemp, Warning, TEXT("스코어 스폰 시작"));
+	//UE_LOG(LogTemp, Warning, TEXT("스코어 스폰 시작"));
 
 	if (SpawnedProps.Num() > 0)
 	{
@@ -87,7 +87,7 @@ void AScoreGameState::SpawnProps()
 					params
 					);
 				if (SpawnedProp) {
-					UE_LOG(LogTemp, Warning, TEXT("스코어 스폰 성공"));
+					//UE_LOG(LogTemp, Warning, TEXT("스코어 스폰 성공"));
 					SpawnedProps.Add(SpawnedProp);
 				}
 				
@@ -114,7 +114,7 @@ FVector AScoreGameState::FindRandomLocation()
 		if (bFound)
 		{
 			// 찾은 좌표: RandomLocation.Location
-			UE_LOG(LogTemp, Log, TEXT("Found Location: %s"), *RandomLocation.Location.ToString());
+			//UE_LOG(LogTemp, Log, TEXT("Found Location: %s"), *RandomLocation.Location.ToString());
 
 			return RandomLocation.Location+FVector::UpVector*100.0f;
 		}

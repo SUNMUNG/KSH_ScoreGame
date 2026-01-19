@@ -72,6 +72,15 @@
     <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\ScoreActor\ScoreActorBase.cpp">
       <Filter>Source\KSH_ScoreGame\Private\ScoreActor</Filter>
     </ClCompile>
+    <Filter Include="Source\KSH_ScoreGame\Private\UI">
+      <UniqueIdentifier>{43E0F9E0-5FB2-34F0-881C-4728C5C04C00}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\UI\PlayerHUDWidget.cpp">
+      <Filter>Source\KSH_ScoreGame\Private\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\UI\ScoreBar.cpp">
+      <Filter>Source\KSH_ScoreGame\Private\UI</Filter>
+    </ClCompile>
     <Filter Include="Source\KSH_ScoreGame\Public">
       <UniqueIdentifier>{369D6E5E-59B7-325D-B4F2-A84A02BDB51E}</UniqueIdentifier>
     </Filter>
@@ -101,6 +110,15 @@
     </Filter>
     <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\ScoreActor\ScoreActorBase.h">
       <Filter>Source\KSH_ScoreGame\Public\ScoreActor</Filter>
+    </ClCompile>
+    <Filter Include="Source\KSH_ScoreGame\Public\UI">
+      <UniqueIdentifier>{6098F33D-462F-3C17-B792-3B70C22D3CE9}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\UI\PlayerHUDWidget.h">
+      <Filter>Source\KSH_ScoreGame\Public\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\UI\ScoreBar.h">
+      <Filter>Source\KSH_ScoreGame\Public\UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

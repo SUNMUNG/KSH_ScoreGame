@@ -182,7 +182,7 @@ struct Z_Construct_UClass_AScoreGameState_Statics
 		{ "ModuleRelativePath", "Public/Framework/ScoreGameState.h" },
 		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GameElapsedTime_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GameRemainingTime_MetaData[] = {
 		{ "Category", "Game Data" },
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "//\xec\xa7\x84\xed\x96\x89 \xec\x8b\x9c\xea\xb0\x84\n" },
@@ -203,7 +203,7 @@ struct Z_Construct_UClass_AScoreGameState_Statics
 #endif
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_GameElapsedTime;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_GameRemainingTime;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_ScoreActor;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
@@ -219,10 +219,10 @@ struct Z_Construct_UClass_AScoreGameState_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AScoreGameState_Statics::NewProp_GameElapsedTime = { "GameElapsedTime", nullptr, (EPropertyFlags)0x0020080000000034, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AScoreGameState, GameElapsedTime), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameElapsedTime_MetaData), NewProp_GameElapsedTime_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AScoreGameState_Statics::NewProp_GameRemainingTime = { "GameRemainingTime", nullptr, (EPropertyFlags)0x0020080000000034, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AScoreGameState, GameRemainingTime), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameRemainingTime_MetaData), NewProp_GameRemainingTime_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AScoreGameState_Statics::NewProp_ScoreActor = { "ScoreActor", nullptr, (EPropertyFlags)0x0024080000000015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AScoreGameState, ScoreActor), Z_Construct_UClass_UClass, Z_Construct_UClass_AScoreActorBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ScoreActor_MetaData), NewProp_ScoreActor_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AScoreGameState_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AScoreGameState_Statics::NewProp_GameElapsedTime,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AScoreGameState_Statics::NewProp_GameRemainingTime,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AScoreGameState_Statics::NewProp_ScoreActor,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AScoreGameState_Statics::PropPointers) < 2048);
@@ -260,9 +260,9 @@ template<> KSH_SCOREGAME_API UClass* StaticClass<AScoreGameState>()
 }
 void AScoreGameState::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const
 {
-	static const FName Name_GameElapsedTime(TEXT("GameElapsedTime"));
+	static const FName Name_GameRemainingTime(TEXT("GameRemainingTime"));
 	const bool bIsValid = true
-		&& Name_GameElapsedTime == ClassReps[(int32)ENetFields_Private::GameElapsedTime].Property->GetFName();
+		&& Name_GameRemainingTime == ClassReps[(int32)ENetFields_Private::GameRemainingTime].Property->GetFName();
 	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in AScoreGameState"));
 }
 DEFINE_VTABLE_PTR_HELPER_CTOR(AScoreGameState);
@@ -273,10 +273,10 @@ AScoreGameState::~AScoreGameState() {}
 struct Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AScoreGameState, AScoreGameState::StaticClass, TEXT("AScoreGameState"), &Z_Registration_Info_UClass_AScoreGameState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AScoreGameState), 3063421727U) },
+		{ Z_Construct_UClass_AScoreGameState, AScoreGameState::StaticClass, TEXT("AScoreGameState"), &Z_Registration_Info_UClass_AScoreGameState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AScoreGameState), 4008474384U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_4294930522(TEXT("/Script/KSH_ScoreGame"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_316159063(TEXT("/Script/KSH_ScoreGame"),
 	Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

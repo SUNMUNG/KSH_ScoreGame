@@ -2,7 +2,9 @@
 
 
 #include "Character/ScoreCharacter.h"
+#include "Framework/ScorePlayerState.h"
 #include "Components/WidgetComponent.h"
+#include "UI/ScoreBar.h"
 // Sets default values
 AScoreCharacter::AScoreCharacter()
 {
@@ -19,12 +21,29 @@ AScoreCharacter::AScoreCharacter()
 void AScoreCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (ScoreBar)
+	{
+		UScoreBar* ScoreBarWidget = Cast<UScoreBar>(ScoreBar->GetWidget());
+
+		if (ScoreBarWidget)
+		{
+			ScoreBarWidget->SetOwnerCharacter(this);
+		}
+	}
 	
 }
 
 void AScoreCharacter::OnRep_PlayerState()
 {
 	Super::OnRep_PlayerState();
+
+
+	
+	if (AScorePlayerState* PS = GetPlayerState<AScorePlayerState>())
+	{
+		OnPlayerStateReady(PS);
+	}
 }
 
 // Called to bind functionality to input

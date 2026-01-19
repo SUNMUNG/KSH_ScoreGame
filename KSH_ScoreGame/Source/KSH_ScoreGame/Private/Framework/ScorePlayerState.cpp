@@ -10,7 +10,7 @@ AScorePlayerState::AScorePlayerState()
 
 void AScorePlayerState::BeginPlay()
 {
-	
+	Super::BeginPlay();
 }
 
 void AScorePlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

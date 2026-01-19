@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KSH_ScoreGameModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e4ffb5e344cd73645dab7c1063a601e001e7d21")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6863bba70dacb7b1bc2abfbaf585e9f6a8a49908")]
 [assembly: System.Reflection.AssemblyProductAttribute("KSH_ScoreGameModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KSH_ScoreGameModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

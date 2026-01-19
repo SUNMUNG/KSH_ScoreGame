@@ -21,6 +21,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty >& OutLifetimeProps) const override;
 
+	inline float GetGameRemainingTime() { return GameRemainingTime; }
+
 	UFUNCTION()
 	void ScoreGameStart();
 
@@ -37,7 +39,7 @@ public:
 protected:
 	//진행 시간
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Game Data")
-	float GameElapsedTime = 0.0f;
+	float GameRemainingTime = 300.0f;
 
 	//소환할 스코어 액터
 	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "Game Data")
@@ -46,7 +48,7 @@ protected:
 private:
 	//한번에 스폰할 액터 수
 	int32 SpawnAmount = 10;
-
+	float PlayGameTime = 300.0f;
 	bool isGameStart = false;
 	bool isGameEnd = false;
 
