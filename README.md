@@ -1,2 +1,0 @@
-# KSH_ScoreGame
-

@@ -21,6 +21,9 @@ public:
 
 	void UpdateRemainGameTime();
 
+	UFUNCTION(BlueprintCallable)
+	void UpdateLeaderboard();
+
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (BindWidget))
 	TObjectPtr<class UTextBlock> RemainGameTime = nullptr;
@@ -28,7 +31,12 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (BindWidget))
 	TObjectPtr<class UVerticalBox> RankBox = nullptr;
 
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UScoreBoardBar> ScoreBoardBarClass;
+
 private:
+
+	FTimerHandle LeaderboardTimerHandle;
 
 	TWeakObjectPtr<class AScoreGameState> CachedGameState = nullptr;
 

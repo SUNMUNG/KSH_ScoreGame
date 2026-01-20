@@ -19,10 +19,16 @@ KSH_SCOREGAME_API void FOnScoreChanged_DelegateWrapper(const FMulticastScriptDel
 
 
 #define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScorePlayerState_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void Server_SetPlayerReady_Implementation(bool bReady); \
+	DECLARE_FUNCTION(execOnRep_IsReady); \
 	DECLARE_FUNCTION(execOnRepNotify_MyScore); \
+	DECLARE_FUNCTION(execServer_SetPlayerReady); \
+	DECLARE_FUNCTION(execIsPlayerReady); \
+	DECLARE_FUNCTION(execSetPlayerReady); \
 	DECLARE_FUNCTION(execGetMyScore);
 
 
+#define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScorePlayerState_h_17_CALLBACK_WRAPPERS
 #define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScorePlayerState_h_17_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAScorePlayerState(); \
@@ -33,7 +39,8 @@ public: \
 	enum class ENetFields_Private : uint16 \
 	{ \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
-		MyScore=NETFIELD_REP_START, \
+		bIsReady=NETFIELD_REP_START, \
+		MyScore, \
 		NETFIELD_REP_END=MyScore	}; \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
@@ -55,6 +62,7 @@ public: \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScorePlayerState_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScorePlayerState_h_17_CALLBACK_WRAPPERS \
 	FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScorePlayerState_h_17_INCLASS_NO_PURE_DECLS \
 	FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScorePlayerState_h_17_ENHANCED_CONSTRUCTORS \
 private: \

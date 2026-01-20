@@ -9,19 +9,21 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+enum class EScoreGameState : uint8;
 #ifdef KSH_SCOREGAME_ScoreGameState_generated_h
 #error "ScoreGameState.generated.h already included, missing '#pragma once' in ScoreGameState.h"
 #endif
 #define KSH_SCOREGAME_ScoreGameState_generated_h
 
-#define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_24_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execFindRandomLocation); \
 	DECLARE_FUNCTION(execSpawnProps); \
-	DECLARE_FUNCTION(execScoreGameEnd); \
-	DECLARE_FUNCTION(execScoreGameStart);
+	DECLARE_FUNCTION(execOnReadyTimerFinished); \
+	DECLARE_FUNCTION(execOnRep_CurrentGameState); \
+	DECLARE_FUNCTION(execGetScoreGameState);
 
 
-#define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_15_INCLASS_NO_PURE_DECLS \
+#define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_24_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAScoreGameState(); \
 	friend struct Z_Construct_UClass_AScoreGameState_Statics; \
@@ -31,12 +33,14 @@ public: \
 	enum class ENetFields_Private : uint16 \
 	{ \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
-		GameRemainingTime=NETFIELD_REP_START, \
-		NETFIELD_REP_END=GameRemainingTime	}; \
+		CurrentGameState=NETFIELD_REP_START, \
+		GameRemainingTime, \
+		DefaultGameTime, \
+		NETFIELD_REP_END=DefaultGameTime	}; \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 
-#define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_15_ENHANCED_CONSTRUCTORS \
+#define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_24_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	AScoreGameState(AScoreGameState&&); \
@@ -48,13 +52,13 @@ public: \
 	NO_API virtual ~AScoreGameState();
 
 
-#define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_12_PROLOG
-#define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_15_GENERATED_BODY \
+#define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_21_PROLOG
+#define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_24_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_15_INCLASS_NO_PURE_DECLS \
-	FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_15_ENHANCED_CONSTRUCTORS \
+	FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_24_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_24_INCLASS_NO_PURE_DECLS \
+	FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h_24_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -64,5 +68,15 @@ template<> KSH_SCOREGAME_API UClass* StaticClass<class AScoreGameState>();
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScoreGameState_h
 
+
+#define FOREACH_ENUM_ESCOREGAMESTATE(op) \
+	op(EScoreGameState::WaitingToStart) \
+	op(EScoreGameState::Ready) \
+	op(EScoreGameState::InProgress) \
+	op(EScoreGameState::GameOver) 
+
+enum class EScoreGameState : uint8;
+template<> struct TIsUEnumClass<EScoreGameState> { enum { Value = true }; };
+template<> KSH_SCOREGAME_API UEnum* StaticEnum<EScoreGameState>();
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

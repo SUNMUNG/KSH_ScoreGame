@@ -2,6 +2,7 @@
 
 
 #include "Framework/ScoreGameState.h"
+#include "Framework/ScorePlayerState.h"
 #include "ScoreActor/ScoreActorBase.h"
 #include "NavigationSystem.h"
 #include "Net/UnrealNetwork.h"
@@ -9,53 +10,119 @@ AScoreGameState::AScoreGameState()
 {
 	PrimaryActorTick.bCanEverTick = true;
 }
-void AScoreGameState::BeginPlay()
-{
-	GameRemainingTime = PlayGameTime;
-	isGameEnd = false;
-	
-	if (HasAuthority())
-	{
-		ScoreGameStart();
-	}
-	//isGameStart = false;
-}
-
-void AScoreGameState::Tick(float DeltaTime)
-{
-	/*if (isGameStart && !isGameEnd) {
-		GameElapsedTime += DeltaTime;
-	}*/
-	if (HasAuthority())
-	{
-		if (!isGameEnd) {
-			GameRemainingTime -= DeltaTime;
-		}
-	}
-	
-}
 
 void AScoreGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(AScoreGameState, GameRemainingTime);
+	DOREPLIFETIME(AScoreGameState, CurrentGameState);
+}
+void AScoreGameState::BeginPlay()
+{
+	if (HasAuthority())
+	{
+		SetScoreGameState(EScoreGameState::WaitingToStart);
+		GameRemainingTime = DefaultGameTime;
+	}
 }
 
-void AScoreGameState::ScoreGameStart()
+void AScoreGameState::Tick(float DeltaTime)
 {
+	if (HasAuthority() && CurrentGameState == EScoreGameState::InProgress)
+	{
+		GameRemainingTime -= DeltaTime;
+
+		if (GameRemainingTime <= 0.0f)
+		{
+			SetScoreGameState(EScoreGameState::GameOver);
+		}
+	}
+
+}
+
+
+
+void AScoreGameState::OnScorePlayerAdded()
+{
+	if (!HasAuthority()) return;
+
+}
+
+void AScoreGameState::SetScoreGameState(EScoreGameState NewState)
+{
+	if (!HasAuthority()) return;
+
+	CurrentGameState = NewState;
+
+	OnRep_CurrentGameState();
+}
+
+void AScoreGameState::OnRep_CurrentGameState()
+{
+	switch (CurrentGameState)
+	{
+	case EScoreGameState::WaitingToStart:
+		UE_LOG(LogTemp, Log, TEXT("STATE: Waiting For Players..."));
+		break;
+
+	case EScoreGameState::Ready:
+		UE_LOG(LogTemp, Log, TEXT("STATE: Ready! Countdown Starts."));
+		if (HasAuthority()) StartReadyCountdown(); // 서버에서 준비 카운트다운
+		break;
+
+	case EScoreGameState::InProgress:
+		UE_LOG(LogTemp, Log, TEXT("STATE: Game Start!"));
+		if (HasAuthority()) StartGamePlay(); // 서버에서 게임시작
+		break;
+
+	case EScoreGameState::GameOver:
+		UE_LOG(LogTemp, Log, TEXT("STATE: Game Over!"));
+		if (HasAuthority()) EndGame();
+		break;
+	}
+}
+
+void AScoreGameState::StartReadyCountdown()
+{
+	//준비 3초 카운트다운 후 OnReadyTimerFinished 실행
 	GetWorldTimerManager().SetTimer(
-		PropSpawnHandle,
+		StateTimerHandle,
 		this,
-		&AScoreGameState::SpawnProps,
-		5.0f,
-		true
-	);
+		&AScoreGameState::OnReadyTimerFinished,
+		ReadyCountdownTime, 
+		false);
 }
 
-void AScoreGameState::ScoreGameEnd()
+void AScoreGameState::StartGamePlay()
 {
-	GetWorldTimerManager().ClearTimer(PropSpawnHandle);
+	//5초에 한번 스코어액터 스폰
+	GetWorldTimerManager().SetTimer(
+		PropSpawnTimerHandle, 
+		this,
+		&AScoreGameState::SpawnProps, 
+		5.0f, 
+		true);
+}
+
+void AScoreGameState::EndGame()
+{
+	GetWorldTimerManager().ClearTimer(PropSpawnTimerHandle);
+	GetWorldTimerManager().ClearTimer(StateTimerHandle);
+
+	//남은 스코어액터 제거
+	for (auto& Prop : SpawnedProps)
+	{
+		if (Prop) Prop->Destroy();
+	}
+	SpawnedProps.Empty();
+
+	//이후 결과 UI출력
+}
+
+void AScoreGameState::OnReadyTimerFinished()
+{
+	SetScoreGameState(EScoreGameState::InProgress);
 }
 
 void AScoreGameState::SpawnProps()
@@ -120,4 +187,42 @@ FVector AScoreGameState::FindRandomLocation()
 		}
 	}
 	return FVector::ZeroVector;
+}
+
+void AScoreGameState::CheckAllPlayersReady()
+{
+	if (!HasAuthority()) return;
+
+	//현재 게임 상태가 '대기 중'이 아니면 무시 
+	if (CurrentGameState != EScoreGameState::WaitingToStart)
+	{
+		return;
+	}
+
+	//최소 인원 체크
+	if (PlayerArray.Num() < TargetPlayerCount)
+	{
+		return;
+	}
+
+	//모든 플레이어 순회 검사
+	bool bAllReady = true;
+
+	for (APlayerState* PS : PlayerArray)
+	{
+		if (AScorePlayerState* ScorePS = Cast<AScorePlayerState>(PS))
+		{
+			if (!ScorePS->IsPlayerReady()) // 한 명이라도 준비 안 했으면
+			{
+				bAllReady = false;
+				break;
+			}
+		}
+	}
+
+	//모두 준비되었다면 상태 변경 -> 카운트다운 시작
+	if (bAllReady)
+	{
+		SetScoreGameState(EScoreGameState::Ready);
+	}
 }

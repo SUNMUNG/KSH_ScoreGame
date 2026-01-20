@@ -26,6 +26,7 @@ void AScoreCharacter::BeginPlay()
 	{
 		UScoreBar* ScoreBarWidget = Cast<UScoreBar>(ScoreBar->GetWidget());
 
+		//스코어바 위젯의 오너 설정
 		if (ScoreBarWidget)
 		{
 			ScoreBarWidget->SetOwnerCharacter(this);
@@ -33,6 +34,7 @@ void AScoreCharacter::BeginPlay()
 	}
 	
 }
+
 
 void AScoreCharacter::OnRep_PlayerState()
 {
@@ -42,6 +44,14 @@ void AScoreCharacter::OnRep_PlayerState()
 	
 	if (AScorePlayerState* PS = GetPlayerState<AScorePlayerState>())
 	{
+		if (ScoreBar)
+		{
+			if (UScoreBar* ScoreBarWidget = Cast<UScoreBar>(ScoreBar->GetWidget()))
+			{
+				ScoreBarWidget->InitializeScoreWidget(PS);
+			}
+		}
+		//플레이어 스테이트가 준비되면 새 스테이트로 연결하는 함수 실행
 		OnPlayerStateReady(PS);
 	}
 }
@@ -51,6 +61,15 @@ void AScoreCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void AScoreCharacter::OnPlayerStateReady(AScorePlayerState* NewState)
+{
+	if (ScoreBar)
+	{
+		//플레이어 스테이트 연결
+		Cast<UScoreBar>(ScoreBar->GetUserWidgetObject())->InitializeScoreWidget(NewState);
+	}
 }
 
 

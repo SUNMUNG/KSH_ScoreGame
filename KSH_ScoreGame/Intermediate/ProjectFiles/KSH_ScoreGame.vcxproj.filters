@@ -60,6 +60,9 @@
     <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\Framework\ScoreGameInstance.cpp">
       <Filter>Source\KSH_ScoreGame\Private\Framework</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\Framework\ScoreGameMode.cpp">
+      <Filter>Source\KSH_ScoreGame\Private\Framework</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\Framework\ScoreGameState.cpp">
       <Filter>Source\KSH_ScoreGame\Private\Framework</Filter>
     </ClCompile>
@@ -81,6 +84,9 @@
     <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\UI\ScoreBar.cpp">
       <Filter>Source\KSH_ScoreGame\Private\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Private\UI\ScoreBoardBar.cpp">
+      <Filter>Source\KSH_ScoreGame\Private\UI</Filter>
+    </ClCompile>
     <Filter Include="Source\KSH_ScoreGame\Public">
       <UniqueIdentifier>{369D6E5E-59B7-325D-B4F2-A84A02BDB51E}</UniqueIdentifier>
     </Filter>
@@ -97,6 +103,9 @@
       <UniqueIdentifier>{821C7B7A-9F1C-3E90-8642-ED577FF04736}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\Framework\ScoreGameInstance.h">
+      <Filter>Source\KSH_ScoreGame\Public\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\Framework\ScoreGameMode.h">
       <Filter>Source\KSH_ScoreGame\Public\Framework</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\Framework\ScoreGameState.h">
@@ -118,6 +127,9 @@
       <Filter>Source\KSH_ScoreGame\Public\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\UI\ScoreBar.h">
+      <Filter>Source\KSH_ScoreGame\Public\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\KSH_ScoreGame\Public\UI\ScoreBoardBar.h">
       <Filter>Source\KSH_ScoreGame\Public\UI</Filter>
     </ClCompile>
   </ItemGroup>

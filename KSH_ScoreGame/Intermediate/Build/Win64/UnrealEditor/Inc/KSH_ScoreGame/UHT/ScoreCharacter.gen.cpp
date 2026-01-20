@@ -19,20 +19,12 @@ UPackage* Z_Construct_UPackage__Script_KSH_ScoreGame();
 // End Cross Module References
 
 // Begin Class AScoreCharacter Function OnPlayerStateReady
-struct ScoreCharacter_eventOnPlayerStateReady_Parms
-{
-	AScorePlayerState* NewState;
-};
-static const FName NAME_AScoreCharacter_OnPlayerStateReady = FName(TEXT("OnPlayerStateReady"));
-void AScoreCharacter::OnPlayerStateReady(AScorePlayerState* NewState)
-{
-	ScoreCharacter_eventOnPlayerStateReady_Parms Parms;
-	Parms.NewState=NewState;
-	UFunction* Func = FindFunctionChecked(NAME_AScoreCharacter_OnPlayerStateReady);
-	ProcessEvent(Func,&Parms);
-}
 struct Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics
 {
+	struct ScoreCharacter_eventOnPlayerStateReady_Parms
+	{
+		AScorePlayerState* NewState;
+	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "Score" },
@@ -48,8 +40,8 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AScore
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::NewProp_NewState,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AScoreCharacter, nullptr, "OnPlayerStateReady", nullptr, nullptr, Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::PropPointers), sizeof(ScoreCharacter_eventOnPlayerStateReady_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020800, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::Function_MetaDataParams), Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::Function_MetaDataParams) };
-static_assert(sizeof(ScoreCharacter_eventOnPlayerStateReady_Parms) < MAX_uint16);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AScoreCharacter, nullptr, "OnPlayerStateReady", nullptr, nullptr, Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::PropPointers), sizeof(Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::ScoreCharacter_eventOnPlayerStateReady_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::Function_MetaDataParams), Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady_Statics::ScoreCharacter_eventOnPlayerStateReady_Parms) < MAX_uint16);
 UFunction* Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady()
 {
 	static UFunction* ReturnFunction = nullptr;
@@ -59,11 +51,24 @@ UFunction* Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady()
 	}
 	return ReturnFunction;
 }
+DEFINE_FUNCTION(AScoreCharacter::execOnPlayerStateReady)
+{
+	P_GET_OBJECT(AScorePlayerState,Z_Param_NewState);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnPlayerStateReady(Z_Param_NewState);
+	P_NATIVE_END;
+}
 // End Class AScoreCharacter Function OnPlayerStateReady
 
 // Begin Class AScoreCharacter
 void AScoreCharacter::StaticRegisterNativesAScoreCharacter()
 {
+	UClass* Class = AScoreCharacter::StaticClass();
+	static const FNameNativePtrPair Funcs[] = {
+		{ "OnPlayerStateReady", &AScoreCharacter::execOnPlayerStateReady },
+	};
+	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
 IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(AScoreCharacter);
 UClass* Z_Construct_UClass_AScoreCharacter_NoRegister()
@@ -88,7 +93,7 @@ struct Z_Construct_UClass_AScoreCharacter_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady, "OnPlayerStateReady" }, // 2917810626
+		{ &Z_Construct_UFunction_AScoreCharacter_OnPlayerStateReady, "OnPlayerStateReady" }, // 3716885961
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -141,10 +146,10 @@ AScoreCharacter::~AScoreCharacter() {}
 struct Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Character_ScoreCharacter_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AScoreCharacter, AScoreCharacter::StaticClass, TEXT("AScoreCharacter"), &Z_Registration_Info_UClass_AScoreCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AScoreCharacter), 2598460968U) },
+		{ Z_Construct_UClass_AScoreCharacter, AScoreCharacter::StaticClass, TEXT("AScoreCharacter"), &Z_Registration_Info_UClass_AScoreCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AScoreCharacter), 3241987272U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Character_ScoreCharacter_h_3274665873(TEXT("/Script/KSH_ScoreGame"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Character_ScoreCharacter_h_3033460727(TEXT("/Script/KSH_ScoreGame"),
 	Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Character_ScoreCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Character_ScoreCharacter_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
