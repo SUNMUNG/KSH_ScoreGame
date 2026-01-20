@@ -6,6 +6,7 @@
 #include "ScoreActor/ScoreActorBase.h"
 #include "NavigationSystem.h"
 #include "Net/UnrealNetwork.h"
+#include "Kismet/GameplayStatics.h"
 AScoreGameState::AScoreGameState()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -60,25 +61,62 @@ void AScoreGameState::SetScoreGameState(EScoreGameState NewState)
 
 void AScoreGameState::OnRep_CurrentGameState()
 {
+	APlayerController* PC = UGameplayStatics::GetPlayerController(this, 0);
+
 	switch (CurrentGameState)
 	{
 	case EScoreGameState::WaitingToStart:
 		//UE_LOG(LogTemp, Log, TEXT("STATE: Waiting For Players..."));
+		if (PC)
+		{
+			PC->SetShowMouseCursor(true);
+
+			FInputModeUIOnly InputMode;
+			InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+			PC->SetInputMode(InputMode);
+		}
 		break;
 
 	case EScoreGameState::Ready:
 		//UE_LOG(LogTemp, Log, TEXT("STATE: Ready! Countdown Starts."));
 		if (HasAuthority()) StartReadyCountdown(); // 서버에서 준비 카운트다운
+
+		if (PC)
+		{
+			PC->SetShowMouseCursor(false);
+
+			// 게임만 조작 가능
+			FInputModeGameOnly InputMode;
+			PC->SetInputMode(InputMode);
+		}
 		break;
 
 	case EScoreGameState::InProgress:
 		//UE_LOG(LogTemp, Log, TEXT("STATE: Game Start!"));
 		if (HasAuthority()) StartGamePlay(); // 서버에서 게임시작
+
+		if (PC)
+		{
+			PC->SetShowMouseCursor(false);
+
+			FInputModeGameOnly InputMode;
+			PC->SetInputMode(InputMode);
+		}
 		break;
 
 	case EScoreGameState::GameOver:
 		//UE_LOG(LogTemp, Log, TEXT("STATE: Game Over!"));
 		if (HasAuthority()) EndGame();
+
+		if (PC)
+		{
+			PC->SetShowMouseCursor(true);
+
+			// UI만 조작 가능
+			FInputModeUIOnly InputMode;
+			InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+			PC->SetInputMode(InputMode);
+		}
 		break;
 	}
 }

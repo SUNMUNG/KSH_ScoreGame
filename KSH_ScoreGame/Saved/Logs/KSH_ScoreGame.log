@@ -1881,3 +1881,21 @@ Script Stack (0 frames) :
 [2026.01.20-08.55.49:823][ 55]LogWorld: UWorld::CleanupWorld for World_2, bSessionEnded=true, bCleanupResources=true
 [2026.01.20-08.55.49:823][ 55]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
 [2026.01.20-08.55.49:885][ 55]LogUObjectHash: Compacting FUObjectHashTables data took   1.06ms
+[2026.01.20-08.58.19:929][504]LogHotReload: New module detected: UnrealEditor-KSH_ScoreGame-0001.dll
+[2026.01.20-08.58.20:601][506]LogHotReload: Starting Hot-Reload from IDE
+[2026.01.20-08.58.20:685][506]LogUObjectHash: Compacting FUObjectHashTables data took   0.88ms
+[2026.01.20-08.58.20:736][506]LogPython: Warning: '/Script/KSH_ScoreGame.ScoreGameState' and '/Script/KSH_ScoreGame.EScoreGameState' have the same name (ScoreGameState) when exposed to Python. Rename one of them using 'ScriptName' meta-data.
+[2026.01.20-08.58.20:858][506]LogUObjectHash: Compacting FUObjectHashTables data took   1.00ms
+[2026.01.20-08.58.20:907][506]LogStreaming: Display: FlushAsyncLoading(551): 1 QueuedPackages, 0 AsyncPackages
+[2026.01.20-08.58.20:910][506]Display: HotReload took  0.3s.
+[2026.01.20-08.58.20:910][506]Display: Reload/Re-instancing Complete: 1 package changed, 10 classes unchanged, 1 enum unchanged, 18 functions remapped
+[2026.01.20-08.58.56:937][614]LogEOSSDK: LogEOS: Updating Product SDK Config, Time: 360.098511
+[2026.01.20-08.58.57:937][617]LogEOSSDK: LogEOS: SDK Config Product Update Request Completed - No Change
+[2026.01.20-08.58.57:937][617]LogEOSSDK: LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 360.764832, Update Interval: 312.019409
+[2026.01.20-08.59.43:608][754]LogHotReload: New module detected: UnrealEditor-KSH_ScoreGame-0002.dll
+[2026.01.20-08.59.44:279][756]LogHotReload: Starting Hot-Reload from IDE
+[2026.01.20-08.59.44:418][756]LogUObjectHash: Compacting FUObjectHashTables data took   2.25ms
+[2026.01.20-08.59.44:479][756]LogPython: Warning: '/Script/KSH_ScoreGame.ScoreGameState' and '/Script/KSH_ScoreGame.EScoreGameState' have the same name (ScoreGameState) when exposed to Python. Rename one of them using 'ScriptName' meta-data.
+[2026.01.20-08.59.44:618][756]LogUObjectHash: Compacting FUObjectHashTables data took   1.22ms
+[2026.01.20-08.59.44:673][756]Display: HotReload took  0.4s.
+[2026.01.20-08.59.44:673][756]Display: Reload/Re-instancing Complete: 1 package changed, 10 classes unchanged, 1 enum unchanged, 18 functions remapped

@@ -129,12 +129,7 @@ void UPlayerHUDWidget::UpdateGameStatusUI()
 		if (CountdownText) CountdownText->SetVisibility(ESlateVisibility::Hidden);
 		if (StatusText) StatusText->SetVisibility(ESlateVisibility::Hidden);
 
-		APlayerController* controller =  UGameplayStatics::GetPlayerController(GetWorld(), 0);
 
-		if (controller)
-		{
-			controller->SetShowMouseCursor(true);
-		}
 
 		// 인원수 계산
 		int32 ReadyCount = 0;
@@ -188,12 +183,6 @@ void UPlayerHUDWidget::UpdateGameStatusUI()
 		{
 			CountdownText->SetVisibility(ESlateVisibility::Visible);
 			CountdownText->SetText(FText::FromString(TEXT("3초뒤 시작...")));
-		}
-		APlayerController* controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
-
-		if (controller)
-		{
-			controller->SetShowMouseCursor(false);
 		}
 		break;
 	}
