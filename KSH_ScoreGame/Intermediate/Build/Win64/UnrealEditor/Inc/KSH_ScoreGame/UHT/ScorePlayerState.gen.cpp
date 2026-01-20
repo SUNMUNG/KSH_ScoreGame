@@ -143,35 +143,6 @@ DEFINE_FUNCTION(AScorePlayerState::execIsPlayerReady)
 }
 // End Class AScorePlayerState Function IsPlayerReady
 
-// Begin Class AScorePlayerState Function OnRep_IsReady
-struct Z_Construct_UFunction_AScorePlayerState_OnRep_IsReady_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Public/Framework/ScorePlayerState.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AScorePlayerState_OnRep_IsReady_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AScorePlayerState, nullptr, "OnRep_IsReady", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AScorePlayerState_OnRep_IsReady_Statics::Function_MetaDataParams), Z_Construct_UFunction_AScorePlayerState_OnRep_IsReady_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_AScorePlayerState_OnRep_IsReady()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AScorePlayerState_OnRep_IsReady_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(AScorePlayerState::execOnRep_IsReady)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->OnRep_IsReady();
-	P_NATIVE_END;
-}
-// End Class AScorePlayerState Function OnRep_IsReady
-
 // Begin Class AScorePlayerState Function OnRepNotify_MyScore
 struct Z_Construct_UFunction_AScorePlayerState_OnRepNotify_MyScore_Statics
 {
@@ -329,7 +300,6 @@ void AScorePlayerState::StaticRegisterNativesAScorePlayerState()
 	static const FNameNativePtrPair Funcs[] = {
 		{ "GetMyScore", &AScorePlayerState::execGetMyScore },
 		{ "IsPlayerReady", &AScorePlayerState::execIsPlayerReady },
-		{ "OnRep_IsReady", &AScorePlayerState::execOnRep_IsReady },
 		{ "OnRepNotify_MyScore", &AScorePlayerState::execOnRepNotify_MyScore },
 		{ "Server_SetPlayerReady", &AScorePlayerState::execServer_SetPlayerReady },
 		{ "SetPlayerReady", &AScorePlayerState::execSetPlayerReady },
@@ -367,6 +337,7 @@ struct Z_Construct_UClass_AScorePlayerState_Statics
 #endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MyScore_MetaData[] = {
+		{ "Category", "Game State" },
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "//\xec\xa0\x90\xec\x88\x98\n" },
 #endif
@@ -385,7 +356,6 @@ struct Z_Construct_UClass_AScorePlayerState_Statics
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_AScorePlayerState_GetMyScore, "GetMyScore" }, // 343450725
 		{ &Z_Construct_UFunction_AScorePlayerState_IsPlayerReady, "IsPlayerReady" }, // 1038552000
-		{ &Z_Construct_UFunction_AScorePlayerState_OnRep_IsReady, "OnRep_IsReady" }, // 3483553626
 		{ &Z_Construct_UFunction_AScorePlayerState_OnRepNotify_MyScore, "OnRepNotify_MyScore" }, // 2422732675
 		{ &Z_Construct_UFunction_AScorePlayerState_Server_SetPlayerReady, "Server_SetPlayerReady" }, // 323865463
 		{ &Z_Construct_UFunction_AScorePlayerState_SetPlayerReady, "SetPlayerReady" }, // 1746426672
@@ -401,8 +371,8 @@ void Z_Construct_UClass_AScorePlayerState_Statics::NewProp_bIsReady_SetBit(void*
 {
 	((AScorePlayerState*)Obj)->bIsReady = 1;
 }
-const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AScorePlayerState_Statics::NewProp_bIsReady = { "bIsReady", "OnRep_IsReady", (EPropertyFlags)0x0020080100000034, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AScorePlayerState), &Z_Construct_UClass_AScorePlayerState_Statics::NewProp_bIsReady_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bIsReady_MetaData), NewProp_bIsReady_MetaData) };
-const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AScorePlayerState_Statics::NewProp_MyScore = { "MyScore", "OnRepNotify_MyScore", (EPropertyFlags)0x0020080100000020, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AScorePlayerState, MyScore), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MyScore_MetaData), NewProp_MyScore_MetaData) };
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AScorePlayerState_Statics::NewProp_bIsReady = { "bIsReady", nullptr, (EPropertyFlags)0x0020080000000034, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AScorePlayerState), &Z_Construct_UClass_AScorePlayerState_Statics::NewProp_bIsReady_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bIsReady_MetaData), NewProp_bIsReady_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AScorePlayerState_Statics::NewProp_MyScore = { "MyScore", "OnRepNotify_MyScore", (EPropertyFlags)0x0020080100000034, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AScorePlayerState, MyScore), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MyScore_MetaData), NewProp_MyScore_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AScorePlayerState_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AScorePlayerState_Statics::NewProp_OnScoreChanged,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AScorePlayerState_Statics::NewProp_bIsReady,
@@ -459,10 +429,10 @@ AScorePlayerState::~AScorePlayerState() {}
 struct Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScorePlayerState_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AScorePlayerState, AScorePlayerState::StaticClass, TEXT("AScorePlayerState"), &Z_Registration_Info_UClass_AScorePlayerState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AScorePlayerState), 287807855U) },
+		{ Z_Construct_UClass_AScorePlayerState, AScorePlayerState::StaticClass, TEXT("AScorePlayerState"), &Z_Registration_Info_UClass_AScorePlayerState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AScorePlayerState), 3280948212U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScorePlayerState_h_626774597(TEXT("/Script/KSH_ScoreGame"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScorePlayerState_h_302682247(TEXT("/Script/KSH_ScoreGame"),
 	Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScorePlayerState_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_Framework_ScorePlayerState_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

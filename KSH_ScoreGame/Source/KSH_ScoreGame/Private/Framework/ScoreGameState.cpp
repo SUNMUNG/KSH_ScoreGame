@@ -117,7 +117,31 @@ void AScoreGameState::EndGame()
 	}
 	SpawnedProps.Empty();
 
-	//이후 결과 UI출력
+	GetWorldTimerManager().SetTimer(
+		RestartTimerHandle,
+		this,
+		&AScoreGameState::ResetGame,
+		5.0f,
+		false
+	);
+}
+
+void AScoreGameState::ResetGame()
+{
+	//플레이어 초기화
+	for (APlayerState* PS : PlayerArray)
+	{
+		if (AScorePlayerState* ScorePS = Cast<AScorePlayerState>(PS))
+		{
+			ScorePS->ResetPlayerStatus();
+		}
+	}
+
+	//시간 초기화
+	GameRemainingTime = DefaultGameTime;
+
+	// 상태 변경 -> WaitingToStart
+	SetScoreGameState(EScoreGameState::WaitingToStart);
 }
 
 void AScoreGameState::OnReadyTimerFinished()
@@ -138,7 +162,7 @@ void AScoreGameState::SpawnProps()
 		SpawnedProps.Empty();
 	}
 
-	if (ScoreActor)
+	if (ScoreActors.Num()>0)
 	{
 		if (UWorld* world = GetWorld())
 		{
@@ -147,8 +171,10 @@ void AScoreGameState::SpawnProps()
 
 			for (int i = 0; i < SpawnAmount; i++)
 			{
+				int32 SelectIndex = FMath::RandRange(0, ScoreActors.Num()-1);
+
 				AScoreActorBase* SpawnedProp = world->SpawnActor<AScoreActorBase>(
-					ScoreActor,
+					ScoreActors[SelectIndex],
 					FindRandomLocation(),
 					FRotator::ZeroRotator,
 					params

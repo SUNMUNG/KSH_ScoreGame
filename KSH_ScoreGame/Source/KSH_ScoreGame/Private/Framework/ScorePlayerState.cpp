@@ -33,12 +33,17 @@ void AScorePlayerState::SetPlayerReady(bool bReady)
 	Server_SetPlayerReady(bReady);
 }
 
+void AScorePlayerState::ResetPlayerStatus()
+{
+	MyScore = 0;
+	bIsReady = false;
+
+	OnRepNotify_MyScore();
+}
+
 void AScorePlayerState::Server_SetPlayerReady_Implementation(bool bReady)
 {
 	bIsReady = bReady;
-
-	// 상태 변경 알림 
-	OnRep_IsReady();
 
 	//누군가 준비 상태를 바꿀 때마다, 검사 요청
 	if (UWorld* World = GetWorld())
@@ -55,7 +60,3 @@ void AScorePlayerState::OnRepNotify_MyScore()
 	OnScoreChanged.Broadcast();
 }
 
-void AScorePlayerState::OnRep_IsReady()
-{
-
-}

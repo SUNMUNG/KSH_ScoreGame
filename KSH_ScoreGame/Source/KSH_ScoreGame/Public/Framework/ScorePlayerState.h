@@ -8,6 +8,7 @@
 
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnScoreChanged);
+
 /**
  * 
  */
@@ -39,7 +40,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Game State")
 	bool IsPlayerReady() const { return bIsReady; }
 
-
+	//초기화 함수
+	void ResetPlayerStatus();
 
 protected:
 	//서버로 준비 신호를 보내는 RPC
@@ -51,20 +53,17 @@ protected:
 	UFUNCTION()
 	void OnRepNotify_MyScore();
 
-	UFUNCTION()
-	void OnRep_IsReady();
-
-
 public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnScoreChanged OnScoreChanged;
+
 protected:
 
 	//준비여부
-	UPROPERTY(ReplicatedUsing = OnRep_IsReady, BlueprintReadOnly, Category = "Game State")
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Game State")
 	bool bIsReady = false;
 	//점수
-	UPROPERTY(ReplicatedUsing = OnRepNotify_MyScore)
+	UPROPERTY(ReplicatedUsing = OnRepNotify_MyScore, BlueprintReadOnly, Category = "Game State")
 	int32 MyScore = 0;
 };

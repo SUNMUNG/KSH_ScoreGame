@@ -25,7 +25,7 @@ void UPlayerHUDWidget::NativeConstruct()
 			LeaderboardTimerHandle,
 			this,
 			&UPlayerHUDWidget::UpdateLeaderboard,
-			2.0f,
+			0.016f,
 			true
 		);
 	}
@@ -87,7 +87,7 @@ void UPlayerHUDWidget::UpdateLeaderboard()
 		return A.GetMyScore() > B.GetMyScore();
 		});
 
-	//기존 목록 싹 비우기 (새로 그리기 위해)
+	//목록 비우기
 	RankBox->ClearChildren();
 
 	//정렬된 순서대로 위젯 생성해서 추가
@@ -112,7 +112,7 @@ void UPlayerHUDWidget::UpdateLeaderboard()
 void UPlayerHUDWidget::UpdateGameStatusUI()
 {
 	if (!CachedGameState.IsValid()) return;
-
+	
 	EScoreGameState CurrentState = CachedGameState->GetScoreGameState();
 
 	// 1. 게임 상태별 UI 로직
@@ -125,6 +125,13 @@ void UPlayerHUDWidget::UpdateGameStatusUI()
 		if (ReadyPanel) ReadyPanel->SetVisibility(ESlateVisibility::Visible);
 		if (CountdownText) CountdownText->SetVisibility(ESlateVisibility::Hidden);
 		if (StatusText) StatusText->SetVisibility(ESlateVisibility::Hidden);
+
+		APlayerController* controller =  UGameplayStatics::GetPlayerController(GetWorld(), 0);
+
+		if (controller)
+		{
+			controller->SetShowMouseCursor(true);
+		}
 
 		// 인원수 계산
 		int32 ReadyCount = 0;
@@ -178,7 +185,12 @@ void UPlayerHUDWidget::UpdateGameStatusUI()
 		{
 			CountdownText->SetVisibility(ESlateVisibility::Visible);
 			CountdownText->SetText(FText::FromString(TEXT("3초뒤 시작...")));
-			// 만약 GameState에 CountdownTime 변수가 있다면 그걸 표시하세요.
+		}
+		APlayerController* controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+
+		if (controller)
+		{
+			controller->SetShowMouseCursor(false);
 		}
 		break;
 	}
@@ -189,6 +201,8 @@ void UPlayerHUDWidget::UpdateGameStatusUI()
 		if (ReadyPanel) ReadyPanel->SetVisibility(ESlateVisibility::Hidden);
 		if (CountdownText) CountdownText->SetVisibility(ESlateVisibility::Hidden);
 		if (StatusText) StatusText->SetVisibility(ESlateVisibility::Hidden);
+		
+
 		break;
 	}
 

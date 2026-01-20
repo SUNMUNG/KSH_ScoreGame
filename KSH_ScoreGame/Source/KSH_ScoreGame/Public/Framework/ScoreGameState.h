@@ -54,6 +54,7 @@ private:
 	void StartReadyCountdown();
 	void StartGamePlay();
 	void EndGame();
+	void ResetGame();
 
 	UFUNCTION()
 	void OnReadyTimerFinished(); 
@@ -77,14 +78,14 @@ protected:
 
 	//진행 시간
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Game Data")
-	float GameRemainingTime = 20.0f;
+	float GameRemainingTime = 40.0f;
 
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Game Data")
-	float DefaultGameTime = 20.0f;
+	float DefaultGameTime = 40.0f;
 
 	//소환할 스코어 액터
 	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "Game Data")
-	TSubclassOf<class AScoreActorBase> ScoreActor = nullptr;
+	TArray<TSubclassOf<class AScoreActorBase>> ScoreActors;
 
 private:
 	//한번에 스폰할 액터 수
@@ -95,7 +96,7 @@ private:
 	float ReadyCountdownTime = 3.0f; 
 
 
-
+	FTimerHandle RestartTimerHandle;
 	FTimerHandle StateTimerHandle;
 	FTimerHandle PropSpawnTimerHandle;
 	TArray<TObjectPtr<class AScoreActorBase>> SpawnedProps;

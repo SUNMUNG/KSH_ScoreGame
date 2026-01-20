@@ -18,6 +18,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void Tick(float Deltatime) override;
 
 	virtual void OnRep_PlayerState() override;
 public:	
@@ -27,7 +28,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Score")
 	void OnPlayerStateReady(class AScorePlayerState* NewState);
-public:
+
+private:
+
+	void WidgetCameraLook();
+
 
 protected:
 

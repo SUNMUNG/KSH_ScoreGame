@@ -9,7 +9,7 @@ void UScoreBoardBar::UpdateData(int32 Rank, FString PlayerName, int32 Score)
 {
 	if (PlayerName.Len() > 10)
 	{
-		PlayerName = PlayerName.Right(7) + TEXT("...");
+		PlayerName = PlayerName.Right(5) + TEXT("...");
 	}
 
 	if (RankText) RankText->SetText(FText::AsNumber(Rank));

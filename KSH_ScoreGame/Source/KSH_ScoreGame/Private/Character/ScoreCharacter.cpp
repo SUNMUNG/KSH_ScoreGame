@@ -3,6 +3,8 @@
 
 #include "Character/ScoreCharacter.h"
 #include "Framework/ScorePlayerState.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "Components/WidgetComponent.h"
 #include "UI/ScoreBar.h"
 // Sets default values
@@ -10,7 +12,7 @@ AScoreCharacter::AScoreCharacter()
 {
 
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 
 	ScoreBar = CreateDefaultSubobject<UWidgetComponent>(TEXT("ScoreBar"));
 	ScoreBar->SetupAttachment(RootComponent);
@@ -33,6 +35,13 @@ void AScoreCharacter::BeginPlay()
 		}
 	}
 	
+}
+
+void AScoreCharacter::Tick(float Deltatime)
+{
+	Super::Tick(Deltatime);
+
+	WidgetCameraLook();
 }
 
 
@@ -68,7 +77,29 @@ void AScoreCharacter::OnPlayerStateReady(AScorePlayerState* NewState)
 	if (ScoreBar)
 	{
 		//플레이어 스테이트 연결
-		Cast<UScoreBar>(ScoreBar->GetUserWidgetObject())->InitializeScoreWidget(NewState);
+		UScoreBar * ScoreBarWidget = Cast<UScoreBar>(ScoreBar->GetUserWidgetObject());
+
+		if (ScoreBarWidget)
+		{
+			ScoreBarWidget->InitializeScoreWidget(NewState);
+		}
+	}
+}
+
+void AScoreCharacter::WidgetCameraLook()
+{
+	if (ScoreBar)
+	{
+		FRotator Newrot = FRotator::ZeroRotator;
+
+		APlayerCameraManager* manager = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);
+
+			if(manager)
+			{
+				Newrot = UKismetMathLibrary::FindLookAtRotation(manager->GetCameraLocation(), ScoreBar->GetComponentLocation());
+
+				ScoreBar->SetWorldRotation(FRotator(0.0f, Newrot.Yaw + 180.0f,Newrot.Roll));
+			}
 	}
 }
 
