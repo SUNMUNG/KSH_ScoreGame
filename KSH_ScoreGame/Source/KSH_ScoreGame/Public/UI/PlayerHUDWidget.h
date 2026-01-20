@@ -61,7 +61,10 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (BindWidget))
 	TObjectPtr<class UTextBlock> StatusText;
 
+	UPROPERTY()
+	TArray<class AScorePlayerState*> SortedPlayers;
 
+	bool bHasProcessedGameOver = false;
 
 
 	//스코어보드에 추가될 클래스

@@ -11,6 +11,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerHUDWidget() {}
 
 // Begin Cross Module References
 COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+KSH_SCOREGAME_API UClass* Z_Construct_UClass_AScorePlayerState_NoRegister();
 KSH_SCOREGAME_API UClass* Z_Construct_UClass_UPlayerHUDWidget();
 KSH_SCOREGAME_API UClass* Z_Construct_UClass_UPlayerHUDWidget_NoRegister();
 KSH_SCOREGAME_API UClass* Z_Construct_UClass_UScoreBoardBar_NoRegister();
@@ -195,6 +196,9 @@ struct Z_Construct_UClass_UPlayerHUDWidget_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/UI/PlayerHUDWidget.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SortedPlayers_MetaData[] = {
+		{ "ModuleRelativePath", "Public/UI/PlayerHUDWidget.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ScoreBoardBarClass_MetaData[] = {
 		{ "Category", "UI" },
 #if !UE_BUILD_SHIPPING
@@ -215,6 +219,8 @@ struct Z_Construct_UClass_UPlayerHUDWidget_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReadyText;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CountdownText;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_StatusText;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_SortedPlayers_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_SortedPlayers;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_ScoreBoardBarClass;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
@@ -238,6 +244,8 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UPlayerHUDWidg
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_ReadyText = { "ReadyText", nullptr, (EPropertyFlags)0x01240800000a001d, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPlayerHUDWidget, ReadyText), Z_Construct_UClass_UTextBlock_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ReadyText_MetaData), NewProp_ReadyText_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_CountdownText = { "CountdownText", nullptr, (EPropertyFlags)0x01240800000a001d, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPlayerHUDWidget, CountdownText), Z_Construct_UClass_UTextBlock_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CountdownText_MetaData), NewProp_CountdownText_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_StatusText = { "StatusText", nullptr, (EPropertyFlags)0x01240800000a001d, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPlayerHUDWidget, StatusText), Z_Construct_UClass_UTextBlock_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StatusText_MetaData), NewProp_StatusText_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_SortedPlayers_Inner = { "SortedPlayers", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_AScorePlayerState_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_SortedPlayers = { "SortedPlayers", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPlayerHUDWidget, SortedPlayers), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SortedPlayers_MetaData), NewProp_SortedPlayers_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_ScoreBoardBarClass = { "ScoreBoardBarClass", nullptr, (EPropertyFlags)0x0024080000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPlayerHUDWidget, ScoreBoardBarClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UScoreBoardBar_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ScoreBoardBarClass_MetaData), NewProp_ScoreBoardBarClass_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UPlayerHUDWidget_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_RemainGameTime,
@@ -249,6 +257,8 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UPlayerHU
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_ReadyText,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_CountdownText,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_StatusText,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_SortedPlayers_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_SortedPlayers,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPlayerHUDWidget_Statics::NewProp_ScoreBoardBarClass,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UPlayerHUDWidget_Statics::PropPointers) < 2048);
@@ -293,10 +303,10 @@ UPlayerHUDWidget::~UPlayerHUDWidget() {}
 struct Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_UI_PlayerHUDWidget_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UPlayerHUDWidget, UPlayerHUDWidget::StaticClass, TEXT("UPlayerHUDWidget"), &Z_Registration_Info_UClass_UPlayerHUDWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UPlayerHUDWidget), 587531395U) },
+		{ Z_Construct_UClass_UPlayerHUDWidget, UPlayerHUDWidget::StaticClass, TEXT("UPlayerHUDWidget"), &Z_Registration_Info_UClass_UPlayerHUDWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UPlayerHUDWidget), 1564659408U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_UI_PlayerHUDWidget_h_2855772050(TEXT("/Script/KSH_ScoreGame"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_UI_PlayerHUDWidget_h_2038359362(TEXT("/Script/KSH_ScoreGame"),
 	Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_UI_PlayerHUDWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_UI_PlayerHUDWidget_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

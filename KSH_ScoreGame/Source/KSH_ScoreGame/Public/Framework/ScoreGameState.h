@@ -75,13 +75,12 @@ protected:
 	UPROPERTY(ReplicatedUsing = OnRep_CurrentGameState, BlueprintReadOnly, Category = "Game State")
 	EScoreGameState CurrentGameState = EScoreGameState::WaitingToStart;
 
-
 	//진행 시간
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Game Data")
-	float GameRemainingTime = 40.0f;
+	float GameRemainingTime = 60.0f;
 
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Game Data")
-	float DefaultGameTime = 40.0f;
+	float DefaultGameTime = 60.0f;
 
 	//소환할 스코어 액터
 	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "Game Data")
@@ -93,7 +92,9 @@ private:
 	//최소인원수
 	int32 TargetPlayerCount = 2; 
 	//시작시 카운트
-	float ReadyCountdownTime = 3.0f; 
+	float ReadyCountdownTime = 3.0f;
+	//스폰간격
+	float SpawnPropsInterval = 3.0f;
 
 
 	FTimerHandle RestartTimerHandle;

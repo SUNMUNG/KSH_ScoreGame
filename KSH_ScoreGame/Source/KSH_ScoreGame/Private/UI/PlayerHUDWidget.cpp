@@ -72,18 +72,19 @@ void UPlayerHUDWidget::UpdateLeaderboard()
 		return;
 	}
 
+	SortedPlayers.Empty();
+
 	//플레이어 목록 가져오기
-	TArray<AScorePlayerState*> Players;
 	for (APlayerState* PS : CachedGameState->PlayerArray)
 	{
 		if (AScorePlayerState* ScorePS = Cast<AScorePlayerState>(PS))
 		{
-			Players.Add(ScorePS);
+			SortedPlayers.Add(ScorePS);
 		}
 	}
 
 	//점수 정렬 (내림차순)
-	Players.Sort([](const AScorePlayerState& A, const AScorePlayerState& B) {
+	SortedPlayers.Sort([](const AScorePlayerState& A, const AScorePlayerState& B) {
 		return A.GetMyScore() > B.GetMyScore();
 		});
 
@@ -91,16 +92,16 @@ void UPlayerHUDWidget::UpdateLeaderboard()
 	RankBox->ClearChildren();
 
 	//정렬된 순서대로 위젯 생성해서 추가
-	for (int32 i = 0; i < Players.Num(); i++)
+	for (int32 i = 0; i < SortedPlayers.Num(); i++)
 	{
-		if (Players[i])
+		if (SortedPlayers[i])
 		{
 			// 위젯 생성
 			UScoreBoardBar* RowWidget = CreateWidget<UScoreBoardBar>(this, ScoreBoardBarClass);
 			if (RowWidget)
 			{
 				// 데이터 세팅
-				RowWidget->UpdateData(i + 1, Players[i]->GetPlayerName(), Players[i]->GetMyScore());
+				RowWidget->UpdateData(i + 1, SortedPlayers[i]->GetPlayerName(), SortedPlayers[i]->GetMyScore());
 
 				// 박스에 추가
 				RankBox->AddChild(RowWidget);
@@ -122,6 +123,8 @@ void UPlayerHUDWidget::UpdateGameStatusUI()
 	{
 		// [대기 상태]
 		// 로비 패널 보이기
+		bHasProcessedGameOver = false;
+
 		if (ReadyPanel) ReadyPanel->SetVisibility(ESlateVisibility::Visible);
 		if (CountdownText) CountdownText->SetVisibility(ESlateVisibility::Hidden);
 		if (StatusText) StatusText->SetVisibility(ESlateVisibility::Hidden);
@@ -208,12 +211,29 @@ void UPlayerHUDWidget::UpdateGameStatusUI()
 
 	case EScoreGameState::GameOver:
 	{
+		bHasProcessedGameOver = true;
+
+		UpdateLeaderboard();
+
 		// [게임 종료]
 		if (ReadyPanel) ReadyPanel->SetVisibility(ESlateVisibility::Hidden);
 		if (StatusText)
 		{
 			StatusText->SetVisibility(ESlateVisibility::Visible);
-			StatusText->SetText(FText::FromString(TEXT("게임 종료.")));
+
+			AScorePlayerState* MyPS = Cast<AScorePlayerState>(GetOwningPlayerState());
+
+			//점수 비교
+			if (MyPS && SortedPlayers.Num() > 0 && MyPS->GetMyScore() >= SortedPlayers[0]->GetMyScore())
+			{
+				StatusText->SetText(FText::FromString(TEXT("승리!")));
+				StatusText->SetColorAndOpacity(FLinearColor::Green);
+			}
+			else
+			{
+				StatusText->SetText(FText::FromString(TEXT("패배...")));
+				StatusText->SetColorAndOpacity(FLinearColor::Red);
+			}
 		}
 		break;
 	}

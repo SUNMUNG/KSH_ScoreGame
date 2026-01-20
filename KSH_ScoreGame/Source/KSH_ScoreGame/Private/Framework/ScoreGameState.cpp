@@ -63,21 +63,21 @@ void AScoreGameState::OnRep_CurrentGameState()
 	switch (CurrentGameState)
 	{
 	case EScoreGameState::WaitingToStart:
-		UE_LOG(LogTemp, Log, TEXT("STATE: Waiting For Players..."));
+		//UE_LOG(LogTemp, Log, TEXT("STATE: Waiting For Players..."));
 		break;
 
 	case EScoreGameState::Ready:
-		UE_LOG(LogTemp, Log, TEXT("STATE: Ready! Countdown Starts."));
+		//UE_LOG(LogTemp, Log, TEXT("STATE: Ready! Countdown Starts."));
 		if (HasAuthority()) StartReadyCountdown(); // 서버에서 준비 카운트다운
 		break;
 
 	case EScoreGameState::InProgress:
-		UE_LOG(LogTemp, Log, TEXT("STATE: Game Start!"));
+		//UE_LOG(LogTemp, Log, TEXT("STATE: Game Start!"));
 		if (HasAuthority()) StartGamePlay(); // 서버에서 게임시작
 		break;
 
 	case EScoreGameState::GameOver:
-		UE_LOG(LogTemp, Log, TEXT("STATE: Game Over!"));
+		//UE_LOG(LogTemp, Log, TEXT("STATE: Game Over!"));
 		if (HasAuthority()) EndGame();
 		break;
 	}
@@ -101,7 +101,7 @@ void AScoreGameState::StartGamePlay()
 		PropSpawnTimerHandle, 
 		this,
 		&AScoreGameState::SpawnProps, 
-		5.0f, 
+		SpawnPropsInterval,
 		true);
 }
 
