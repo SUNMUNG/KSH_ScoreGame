@@ -24,6 +24,14 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void UpdateLeaderboard();
 
+
+	UFUNCTION(BlueprintCallable)
+	void UpdateGameStatusUI();
+
+private:
+	UFUNCTION()
+	void OnReadyButtonClicked();
+
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (BindWidget))
 	TObjectPtr<class UTextBlock> RemainGameTime = nullptr;
@@ -31,6 +39,32 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (BindWidget))
 	TObjectPtr<class UVerticalBox> RankBox = nullptr;
 
+	//레디 패널
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (BindWidget))
+	TObjectPtr<class USizeBox> ReadyPanel = nullptr;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (BindWidget))
+	TObjectPtr<class UTextBlock> CurrentText = nullptr;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (BindWidget))
+	TObjectPtr<class UTextBlock> TotalText = nullptr;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (BindWidget))
+	TObjectPtr<class UButton> ReadyButton = nullptr;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (BindWidget))
+	TObjectPtr<class UTextBlock> ReadyText = nullptr;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (BindWidget))
+	TObjectPtr<class UTextBlock> CountdownText;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (BindWidget))
+	TObjectPtr<class UTextBlock> StatusText;
+
+
+
+
+	//스코어보드에 추가될 클래스
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
 	TSubclassOf<class UScoreBoardBar> ScoreBoardBarClass;
 

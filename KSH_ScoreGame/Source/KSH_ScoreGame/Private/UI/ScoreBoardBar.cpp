@@ -4,6 +4,7 @@
 #include "UI/ScoreBoardBar.h"
 #include "Components/TextBlock.h"
 
+
 void UScoreBoardBar::UpdateData(int32 Rank, FString PlayerName, int32 Score)
 {
 	if (PlayerName.Len() > 10)

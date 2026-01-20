@@ -17,7 +17,7 @@ class KSH_SCOREGAME_API AScorePlayerState : public APlayerState
 	GENERATED_BODY()
 	
 public:
-	AScorePlayerState();
+
 
 	virtual void BeginPlay() override;
 	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty >& OutLifetimeProps) const override;

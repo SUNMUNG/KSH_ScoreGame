@@ -15,6 +15,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define KSH_SCOREGAME_PlayerHUDWidget_generated_h
 
 #define FID_Users_KGA_Documents_Unreal_Projects_KSH_ScoreGame_KSH_ScoreGame_Source_KSH_ScoreGame_Public_UI_PlayerHUDWidget_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execOnReadyButtonClicked); \
+	DECLARE_FUNCTION(execUpdateGameStatusUI); \
 	DECLARE_FUNCTION(execUpdateLeaderboard);
 
 

@@ -5,10 +5,6 @@
 #include "Framework/ScoreGameState.h"
 #include "Net/UnrealNetwork.h"
 
-AScorePlayerState::AScorePlayerState()
-{
-}
-
 void AScorePlayerState::BeginPlay()
 {
 	Super::BeginPlay();
@@ -19,6 +15,7 @@ void AScorePlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(AScorePlayerState, MyScore);
+	DOREPLIFETIME(AScorePlayerState, bIsReady);
 }
 
 void AScorePlayerState::AddMyScore(int32 ScoreAmount)
@@ -60,5 +57,5 @@ void AScorePlayerState::OnRepNotify_MyScore()
 
 void AScorePlayerState::OnRep_IsReady()
 {
-	//준비완료 UI델리게이트 발송
+
 }

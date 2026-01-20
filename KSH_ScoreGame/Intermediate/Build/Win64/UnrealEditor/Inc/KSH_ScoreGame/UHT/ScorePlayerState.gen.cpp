@@ -450,6 +450,7 @@ void AScorePlayerState::ValidateGeneratedRepEnums(const TArray<struct FRepRecord
 		&& Name_MyScore == ClassReps[(int32)ENetFields_Private::MyScore].Property->GetFName();
 	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in AScorePlayerState"));
 }
+AScorePlayerState::AScorePlayerState(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 DEFINE_VTABLE_PTR_HELPER_CTOR(AScorePlayerState);
 AScorePlayerState::~AScorePlayerState() {}
 // End Class AScorePlayerState

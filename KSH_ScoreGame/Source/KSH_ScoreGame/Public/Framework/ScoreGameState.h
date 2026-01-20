@@ -31,6 +31,7 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty >& OutLifetimeProps) const override;
 
 	inline float GetGameRemainingTime() { return GameRemainingTime; }
+	inline float GetReadyCountdownTime() { return ReadyCountdownTime; }
 
 	// 플레이어가 들어왔을 때
 	void OnScorePlayerAdded();
@@ -76,10 +77,10 @@ protected:
 
 	//진행 시간
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Game Data")
-	float GameRemainingTime = 300.0f;
+	float GameRemainingTime = 20.0f;
 
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Game Data")
-	float DefaultGameTime = 300.0f;
+	float DefaultGameTime = 20.0f;
 
 	//소환할 스코어 액터
 	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "Game Data")
@@ -92,6 +93,7 @@ private:
 	int32 TargetPlayerCount = 2; 
 	//시작시 카운트
 	float ReadyCountdownTime = 3.0f; 
+
 
 
 	FTimerHandle StateTimerHandle;
