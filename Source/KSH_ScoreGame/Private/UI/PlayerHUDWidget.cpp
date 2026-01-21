@@ -129,7 +129,13 @@ void UPlayerHUDWidget::UpdateGameStatusUI()
 		if (CountdownText) CountdownText->SetVisibility(ESlateVisibility::Hidden);
 		if (StatusText) StatusText->SetVisibility(ESlateVisibility::Hidden);
 
-
+		if (UWorld* World = GetWorld())
+		{
+			if (!World->GetTimerManager().IsTimerActive(LeaderboardTimerHandle))
+			{
+				World->GetTimerManager().SetTimer(LeaderboardTimerHandle, this, &UPlayerHUDWidget::UpdateLeaderboard, 0.5f, true);
+			}
+		}
 
 		// 인원수 계산
 		int32 ReadyCount = 0;
@@ -200,28 +206,56 @@ void UPlayerHUDWidget::UpdateGameStatusUI()
 
 	case EScoreGameState::GameOver:
 	{
-		bHasProcessedGameOver = true;
-
-		UpdateLeaderboard();
-
 		// [게임 종료]
 		if (ReadyPanel) ReadyPanel->SetVisibility(ESlateVisibility::Hidden);
-		if (StatusText)
+
+		// 한 번만 실행하고 타이머 정지 (점수 고정)
+		if (!bHasProcessedGameOver)
 		{
-			StatusText->SetVisibility(ESlateVisibility::Visible);
+			bHasProcessedGameOver = true;
 
-			AScorePlayerState* MyPS = Cast<AScorePlayerState>(GetOwningPlayerState());
-
-			//점수 비교
-			if (MyPS && SortedPlayers.Num() > 0 && MyPS->GetMyScore() >= SortedPlayers[0]->GetMyScore())
+			//자동 갱신 타이머 끄기
+			if (UWorld* World = GetWorld())
 			{
-				StatusText->SetText(FText::FromString(TEXT("승리!")));
-				StatusText->SetColorAndOpacity(FLinearColor::Green);
+				World->GetTimerManager().ClearTimer(LeaderboardTimerHandle);
 			}
-			else
+
+			//최종 점수 표시
+			UpdateLeaderboard();
+
+			//승패 판정 로직
+			if (StatusText)
 			{
-				StatusText->SetText(FText::FromString(TEXT("패배...")));
-				StatusText->SetColorAndOpacity(FLinearColor::Red);
+				StatusText->SetVisibility(ESlateVisibility::Visible);
+				AScorePlayerState* MyPS = Cast<AScorePlayerState>(GetOwningPlayerState());
+
+				if (MyPS && SortedPlayers.Num() > 0)
+				{
+					int32 TopScore = SortedPlayers[0]->GetMyScore();
+					int32 MyScore = MyPS->GetMyScore();
+
+					// 공동 1등 확인 (2등이 있고, 1등과 점수가 같으면 무승부)
+					bool bIsDraw = (SortedPlayers.Num() > 1 && SortedPlayers[1]->GetMyScore() == TopScore);
+
+					if (MyScore >= TopScore)
+					{
+						if (bIsDraw)
+						{
+							StatusText->SetText(FText::FromString(TEXT("무승부")));
+							StatusText->SetColorAndOpacity(FLinearColor::Yellow);
+						}
+						else
+						{
+							StatusText->SetText(FText::FromString(TEXT("승리!")));
+							StatusText->SetColorAndOpacity(FLinearColor::Green);
+						}
+					}
+					else
+					{
+						StatusText->SetText(FText::FromString(TEXT("패배...")));
+						StatusText->SetColorAndOpacity(FLinearColor::Red);
+					}
+				}
 			}
 		}
 		break;
