@@ -232,25 +232,54 @@ FVector AScoreGameState::FindRandomLocation()
 {
 	UNavigationSystemV1* NavSystem = UNavigationSystemV1::GetCurrent(GetWorld());
 
-	if (NavSystem)
-	{
-		FNavLocation RandomLocation;
-		//맵전체
-		float SearchRadius = 1700.0f;
-		FVector Origin = FVector(1500.0f, 1700.0f, 0.0f);
+	if (!NavSystem) return FVector::ZeroVector;
 
-		//도달 가능한 랜덤 좌표
+	FNavLocation RandomLocation;
+	float SearchRadius = 1700.0f;
+	FVector Origin = FVector(1500.0f, 1700.0f, 0.0f);
+
+	//플레이어로부터 떨어져야 할 최소 거리 
+	const float MinDistanceToPlayer = 150.0f;
+
+	//위치 찾기 최대 시도 횟수
+	const int32 MaxAttempts = 10;
+
+	for (int32 i = 0; i < MaxAttempts; i++)
+	{
+		//랜덤 좌표 생성
 		bool bFound = NavSystem->GetRandomReachablePointInRadius(Origin, SearchRadius, RandomLocation);
 
 		if (bFound)
 		{
-			// 찾은 좌표: RandomLocation.Location
-			//UE_LOG(LogTemp, Log, TEXT("Found Location: %s"), *RandomLocation.Location.ToString());
+			FVector CandidateLocation = RandomLocation.Location + FVector::UpVector * 100.0f;
+			bool bIsTooClose = false;
 
-			return RandomLocation.Location+FVector::UpVector*100.0f;
+			//모든 플레이어와의 거리 검사
+			for (APlayerState* PS : PlayerArray)
+			{
+				if (PS && PS->GetPawn())
+				{
+					float Dist = FVector::Dist(CandidateLocation, PS->GetPawn()->GetActorLocation());
+
+					// 플레이어 중 한 명이라도 너무 가까우면 실패 처리
+					if (Dist < MinDistanceToPlayer)
+					{
+						bIsTooClose = true;
+						break;
+					}
+				}
+			}
+
+			//안전한 거리라면 바로 반환
+			if (!bIsTooClose)
+			{
+				return CandidateLocation;
+			}
 		}
 	}
-	return FVector::ZeroVector;
+
+	// 10번 다 실패 시 마지막 좌표 반환
+	return RandomLocation.Location + FVector::UpVector * 100.0f;
 }
 
 void AScoreGameState::CheckAllPlayersReady()
